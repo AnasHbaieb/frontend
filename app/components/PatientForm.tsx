@@ -7,27 +7,36 @@ interface PatientFormProps {
   onCancel: () => void;
 }
 
+const EMPTY_PATIENT: Patient = {
+  id: '',
+  fullName: '',
+  studentPhoneNumber: undefined,
+  parentPhoneNumber: undefined,
+  academicYear: '',
+  section: undefined,
+  institutionName: '',
+};
+
+function normalizePatient(data?: Partial<Patient>): Patient {
+  return {
+    ...EMPTY_PATIENT,
+    ...data,
+    fullName: data?.fullName ?? '',
+    academicYear: data?.academicYear ?? '',
+    institutionName: data?.institutionName ?? '',
+  };
+}
+
 export default function PatientForm({
   patient: initialPatient,
   onSubmit,
   onCancel,
 }: PatientFormProps) {
-  const [patient, setPatient] = useState<Patient>(
-    initialPatient || {
-      id: '',
-      firstName: '',
-      lastName: '',
-      studentPhoneNumber: undefined,
-      parentPhoneNumber: undefined,
-      academicYear: '',
-      section: undefined, // Add new field
-      institutionName: '',
-    }
-  );
+  const [patient, setPatient] = useState<Patient>(() => normalizePatient(initialPatient));
 
   useEffect(() => {
     if (initialPatient) {
-      setPatient(initialPatient);
+      setPatient(normalizePatient(initialPatient));
     }
   }, [initialPatient]);
 
@@ -57,29 +66,16 @@ export default function PatientForm({
       <p className="text-gray-600 mb-6">Veuillez remplir tous les champs obligatoires pour compléter l'inscription.</p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">Prénom de l'élève *</label>
+          <div className="md:col-span-2">
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Nom et Prénom d'éleve *</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={patient.firstName}
+              id="fullName"
+              name="fullName"
+              value={patient.fullName ?? ''}
               onChange={handleChange}
               required
-              placeholder="Entrez le prénom"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Nom de l'élève *</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={patient.lastName}
-              onChange={handleChange}
-              required
-              placeholder="Entrez le nom"
+              placeholder="Entrez le nom et le prénom"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
           </div>
@@ -114,7 +110,7 @@ export default function PatientForm({
             <select
               id="academicYear"
               name="academicYear"
-              value={patient.academicYear}
+              value={patient.academicYear ?? ''}
               onChange={handleChange}
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
@@ -163,7 +159,7 @@ export default function PatientForm({
               type="text"
               id="institutionName"
               name="institutionName"
-              value={patient.institutionName}
+              value={patient.institutionName ?? ''}
               onChange={handleChange}
               required
               placeholder="Entrez le nom de l'établissement"

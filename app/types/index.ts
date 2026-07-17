@@ -1,7 +1,6 @@
 export interface Patient {
   id: string;
-  firstName: string;
-  lastName: string;
+  fullName: string;
   studentPhoneNumber: number | undefined;
   parentPhoneNumber: number | undefined;
   academicYear: string;
