@@ -26,7 +26,7 @@ export default function Dashboard() {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Dossiers Médicaux Récents</h2>
           <ul className="list-disc list-inside text-gray-600">
-            <li>Patient : Laila - Rapport d'examen</li>
+            <li>{"Patient : Laila - Rapport d'examen"}</li>
             <li>Patient : Youssef - Prescription</li>
           </ul>
         </div>

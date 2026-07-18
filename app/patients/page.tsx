@@ -1,10 +1,12 @@
-'use client'
-import React, { useState } from 'react';
+'use client';
+
+import React from 'react';
 import Link from 'next/link';
 import PatientForm from '../components/PatientForm';
+import { Patient } from '../types';
 
 export default function InscriptionEtudiantPage() {
-  const handleSubmit = (patientData: any) => {
+  const handleSubmit = (patientData: Patient) => {
     console.log("Données d'inscription de l'étudiant:", patientData);
     // هنا يمكن إضافة منطق لإرسال البيانات إلى الواجهة الخلفية
     alert("L'étudiant a été inscrit avec succès!");
@@ -33,7 +35,7 @@ export default function InscriptionEtudiantPage() {
           </Link>
           <h1 className="text-3xl font-bold text-gray-800">Inscription Étudiant</h1>
         </div>
-        <p className="text-gray-600 mb-8">Formulaire d'inscription pour nouveaux étudiants</p>
+        <p className="text-gray-600 mb-8">{"Formulaire d'inscription pour nouveaux étudiants"}</p>
 
         <PatientForm onSubmit={handleSubmit} onCancel={() => {}} />
       </div>

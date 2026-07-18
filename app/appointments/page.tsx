@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Appointment } from '../types';
 import AppointmentForm from '../components/AppointmentForm';
@@ -35,7 +37,7 @@ export default function AppointmentsPage() {
 
   const handleDeleteAppointment = async (appointmentId: string) => {
     setError(null);
-    const response = await remove<any>(`/attendance/${appointmentId}`); // point de terminaison pour la suppression
+    const response = await remove(`/attendance/${appointmentId}`); // point de terminaison pour la suppression
     if (response.success) {
       setAppointments(appointments.filter(app => app.id !== appointmentId));
     } else {

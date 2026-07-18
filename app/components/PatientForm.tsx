@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Patient } from '../types';
 
@@ -30,7 +32,6 @@ function normalizePatient(data?: Partial<Patient>): Patient {
 export default function PatientForm({
   patient: initialPatient,
   onSubmit,
-  onCancel,
 }: PatientFormProps) {
   const [patient, setPatient] = useState<Patient>(() => normalizePatient(initialPatient));
 
@@ -62,12 +63,12 @@ export default function PatientForm({
 
   return (
     <div className="p-6 bg-white rounded-lg">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Informations de l'étudiant</h2>
-      <p className="text-gray-600 mb-6">Veuillez remplir tous les champs obligatoires pour compléter l'inscription.</p>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">{"Informations de l'étudiant"}</h2>
+      <p className="text-gray-600 mb-6">{"Veuillez remplir tous les champs obligatoires pour compléter l'inscription."}</p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Nom et Prénom d'éleve *</label>
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">{"Nom et Prénom d'éleve *"}</label>
             <input
               type="text"
               id="fullName"
@@ -80,7 +81,7 @@ export default function PatientForm({
             />
           </div>
           <div>
-            <label htmlFor="studentPhoneNumber" className="block text-sm font-medium text-gray-700">Numéro de téléphone de l'élève *</label>
+            <label htmlFor="studentPhoneNumber" className="block text-sm font-medium text-gray-700">{"Numéro de téléphone de l'élève *"}</label>
             <input
               type="number"
               id="studentPhoneNumber"
@@ -115,7 +116,7 @@ export default function PatientForm({
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-              <option value="">Sélectionnez l'année scolaire</option>
+              <option value="">{"Sélectionnez l'année scolaire"}</option>
               <option value="9ere">9ème Année</option>
               <option value="1ere">1ère Année</option>
               <option value="2eme">2ème Année</option>
@@ -154,7 +155,7 @@ export default function PatientForm({
             </div>
           )}
           <div>
-            <label htmlFor="institutionName" className="block text-sm font-medium text-gray-700">Nom de l'établissement *</label>
+            <label htmlFor="institutionName" className="block text-sm font-medium text-gray-700">{"Nom de l'établissement *"}</label>
             <input
               type="text"
               id="institutionName"
@@ -162,7 +163,7 @@ export default function PatientForm({
               value={patient.institutionName ?? ''}
               onChange={handleChange}
               required
-              placeholder="Entrez le nom de l'établissement"
+              placeholder={"Entrez le nom de l'établissement"}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
           </div>
@@ -171,7 +172,7 @@ export default function PatientForm({
           type="submit"
           className="w-full bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors duration-300"
         >
-          Confirmer l'inscription
+          {"Confirmer l'inscription"}
         </button>
       </form>
     </div>

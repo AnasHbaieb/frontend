@@ -13,14 +13,14 @@ export interface Appointment {
   patientId: string;
   date: string;
   time: string;
-  type: string;
-  notes: string;
+  reason: string;
 }
 
 export interface MedicalRecord {
   id: string;
   patientId: string;
   date: string;
-  description: string;
-  attachments?: string[];
+  doctor: string;
+  diagnosis: string;
+  treatment: string;
 }

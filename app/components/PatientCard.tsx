@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Patient } from '../types';
 
@@ -17,9 +19,9 @@ export default function PatientCard({
   return (
     <div className="bg-white p-4 rounded-lg shadow-md flex justify-between items-center mb-4">
       <div>
-        <p className="text-lg font-medium text-gray-900">{patient.name}</p>
-        <p className="text-sm text-gray-500">Date de naissance : {patient.dateOfBirth}</p>
-        <p className="text-sm text-gray-500">Contact : {patient.contact}</p>
+        <p className="text-lg font-medium text-gray-900">{patient.fullName}</p>
+        <p className="text-sm text-gray-500">Année scolaire : {patient.academicYear}</p>
+        <p className="text-sm text-gray-500">Contact : {patient.studentPhoneNumber}</p>
       </div>
       <div className="flex space-x-2">
         <button

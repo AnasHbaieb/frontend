@@ -1,4 +1,3 @@
-import Dashboard from "./components/Dashboard";
 import Link from 'next/link';
 
 export default function Home() {
@@ -12,10 +11,10 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
         <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center justify-between text-center border border-gray-100">
           <h2 className="text-2xl font-bold text-blue-700 mb-4">Inscription Étudiant</h2>
-          <p className="text-gray-700 mb-6">Formulaire d'inscription pour nouveaux étudiants</p>
+          <p className="text-gray-700 mb-6">{"Formulaire d'inscription pour nouveaux étudiants"}</p>
           <Link href="/patients" className="w-full">
             <button className="bg-gray-900 text-white px-8 py-3 rounded-lg text-lg hover:bg-gray-700 transition-colors duration-300 w-full">
-              S'inscrire
+              {"S'inscrire"}
             </button>
           </Link>
         </div>
